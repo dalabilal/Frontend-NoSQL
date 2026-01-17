@@ -124,11 +124,6 @@ const SignInForm = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <div className="forgot-password">
-            <span id="forgot-password" onClick={() => navigate("/sendVerify")}>
-              forgot password?
-            </span>
-          </div>
           <div className="span-text">
             <span className="condition">You Don't have an account yet?</span>
             <span className="sign-up">
