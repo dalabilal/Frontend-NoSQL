@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { UserProvider } from './service/UserContext';
+
+// import EmailVerification from './pages/email-verification/EmailVerification';
+// import AllAccomodation from './pages/All-accomodation/AllAccomodation';
+// import ViewHousing from './pages/view-details-housing/view-housing';
+// import ResetPassword from './pages/reset-password/resetPassword';
+// import Notification from './notification/notification.component';
+// import ProtectedUsers from './pages/protected/ProtectedUsers';
+// import Verification from './pages/verification/verification';
+// import PaymentForm from './pages/payment-form/PaymentForm';
+// import Profile from './pages/user-profile/Profile';
+// import Favorite from './pages/Favorite/Favorite';
+// import NotFound from './pages/Not-found/NotFound';
+// import HomePage from './pages/HomePage/homePage';
+import SignUp from './pages/sign-up/sign-up';
+import SignInForm from './pages/login/login';
+
+// import NavBar from './component/common/navBar/NavBar';
+// import Guard from './component/guard/guard';
+// import GuardFav from './component/guard-fav/guard';
+// import Admin from './pages/admin-panel/Admin';
+// import GuardAdmin from './component/guard-admin/guardadmin';
+// import Allusers from './pages/admin-panel/allusers';
+// import Terms from './pages/Terms/Terms';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+ return (
+  <UserProvider>
+    <BrowserRouter>
+    {/* <NavBar/> */}
+      <Routes>
+        {/* <Route path='/' element={<HomePage/>}/> */}
+        <Route path='/signin' element={<SignInForm/>}/>
+        <Route path='/signup' element={<SignUp/>}/>
+        {/* <Route path='/profile' element={<Profile/>}/>
+        <Route path='/all' element={<AllAccomodation/>}/>
+        <Route path='/all/:id' element={<ViewHousing/>}/>
+        <Route path='/favorite' element={<GuardFav permittedRoles={['student']}><Favorite/></GuardFav>}/>
+        <Route path='/allusers' element={<Guard permittedRoles={['owner']}><ProtectedUsers /></Guard>} />
+        <Route path='/*' element={<NotFound/>}/>
+        <Route path='/verification' element={<Verification/>}/>
+        <Route path='/sendVerify' element={<EmailVerification/>}/>
+        <Route path='/payment' element={<PaymentForm/>}/>
+        <Route path='/reset' element={<ResetPassword/>}/>
+        <Route path='/terms' element={<Terms/>}/>
+        <Route path='/owners' element={<GuardAdmin permittedRoles={['admin']}><Admin/></GuardAdmin>}/> */}
+        {/* <Route path='/users' element={<GuardAdmin permittedRoles={['admin']}><Allusers/></GuardAdmin>}/> */}
+      </Routes>
+    </BrowserRouter>
+   </UserProvider>
+ );
 }
 
-export default App
+export default App;

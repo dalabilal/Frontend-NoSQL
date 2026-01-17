@@ -1,0 +1,255 @@
+.main1 {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main1 .img-sign {
+    width: 44px;
+    height: 41px;
+    margin-right: 25px;
+    margin-top: 20px;
+    align-self: flex-end;
+}
+
+.backgroundDiv {
+    width: 500px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.plur-popup {
+    right: 0px;
+}
+
+.form-control-shadow-none {
+    border: none;
+    box-shadow: none;
+}
+
+.name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main1 .sign-up-form {
+    margin-left: 189px;
+    /* margin-top: 18px; */
+    max-width: 400px;
+    max-height:  758px;
+    padding: 35px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 30px;
+    background: #FFF;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 3;
+}
+
+.main1 .sign-up-form .forgot-password>span {
+    font-size: small;
+    font-family: sans-serif;
+    margin-left: 190px;
+    color: #a3c195;
+}
+
+.main1 .sign-up-form .title {
+    width: 300px;
+    height: 55px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 33px;
+    font-weight: bold;
+    color: #A3C195;
+}
+
+.main1 .sign-up-form .span-text1 {
+    width: 400px;
+}
+
+.main1 .sign-up-form .span-text1 .condition {
+    color: #9d9a9a;
+    margin-left: 25px;
+}
+
+.main1 .sign-up-form .span-text .sign-up>a {
+    color: #a3c195;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.main1 .sign-up-form .signIn-button {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: center;
+    margin-right: 21px;
+
+}
+
+.main1 .sign-up-form .span-text1 {
+    width: 400px;
+    margin-top: 20px;
+    margin-bottom: -7px;
+    align-self: right;
+
+}
+
+.main1 .sign-up-form .span-text1 .signin>a {
+    color: #a3c195;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+#not-match {
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    height: 7px;
+    position: relative;
+    top: -35px;
+    margin: 0;
+    z-index: -50;
+}
+
+
+#notMatch {
+    top: -50px;
+    margin-top: 0px;
+    margin-left: 25%;
+    padding: 0px;
+    align-self: center;
+    font-size: small;
+    z-index: -50;
+}
+
+#PasswordnotStrong {
+    font-size: small;
+    margin-left: 20%;
+    z-index: -50;
+    position: relative;
+    top: -20px;
+}
+
+.main1 .sign-up-form button {
+    width: 35%;
+    align-self: center;
+    padding: 12px;
+    box-sizing: border-box;
+    background-color: #A3C195;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.img-log {
+    top: 60px;
+    width: 436px;
+    height: 613px;
+    position: fixed;
+    left: 600px;
+}
+
+.main1 .sign-up>span>a {
+    color: #023E8A;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.main1 .sign-up-form .role-radio input[type='radio'] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-left: 45px;
+    margin-right: 7px;
+    border: 1px solid #A3C195;
+    border-radius: 50%;
+    outline: none;
+    box-shadow: 0 0 5px #A3C195;
+    transition: box-shadow 0.3s ease;
+}
+
+.main1 .sign-up-form .role-radio input[type='radio']:before {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 60%;
+    margin: 20% auto;
+    border-radius: 50%;
+}
+
+.main1 .sign-up-form .role-radio label {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+    color: #848484;
+}
+
+.main1 .sign-up-form .role-radio input[type='radio']:checked:before {
+    background: #A3C195;
+}
+
+.main1 .sign-up-form .role-radio .role {
+    display: block;
+    margin-bottom: 9px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    color: #666;
+}
+
+
+
+/* .progress {
+    margin-bottom: 10px;
+} */
+
+.progress-bar {
+    position: relative;
+    top: -29px;
+    border-radius: 5px;
+}
+
+.Vbuttons {
+    display: inline;
+    justify-content: space-between;
+}
+
+#verifyB {
+    width: 70px;
+}
+
+#cancel {
+    width: 70px;
+    margin-left: 20px;
+}
+
+#capcha {
+    margin-top: -10px;
+    margin-bottom: -15px;
+}
+
+#check1 {
+    margin-left: 58px;
+    padding: 0;
+    position: absolute;
+    left: 350px;
+}
