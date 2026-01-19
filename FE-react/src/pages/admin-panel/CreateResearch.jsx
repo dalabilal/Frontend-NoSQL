@@ -2,15 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import "./reserach.css";
 
-const RESEARCHERS = [
-  "Alice Smith",
-  "Bob Johnson",
-  "Charlie Lee",
-  "Dana White",
-  "Eve Adams",
-];
 
 const CreateResearch = () => {
+  const [researchers, setResearchers] = useState([]);
 
   const [projectForm, setProjectForm] = useState({
     title: "",
@@ -32,6 +26,16 @@ const CreateResearch = () => {
 
   const [selectedAuthors, setSelectedAuthors] = useState({});
   const [selectedResearchers, setSelectedResearchers] = useState({});
+  useEffect(() => {
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+    const approvedResearchers = storedUsers.filter(
+      (u) => u.role === "researcher" && u.profile_status === "approved"
+    );
+
+    setResearchers(approvedResearchers);
+  }, []);
+
   const [projects, setProjects] = useState(() => {
     const saved = localStorage.getItem("projects");
     return saved ? JSON.parse(saved) : [];
@@ -238,11 +242,12 @@ const CreateResearch = () => {
                       }
                     >
                       <option value="">Select Researcher</option>
-                      {RESEARCHERS.map((r, i) => (
-                        <option key={i} value={r}>
-                          {r}
+                      {researchers.map((r) => (
+                        <option key={r._id} value={r.name}>
+                          {r.name}
                         </option>
                       ))}
+
                     </select>
                     <button
                       style={{ marginLeft: "5px" }}
@@ -335,11 +340,12 @@ const CreateResearch = () => {
                       }
                     >
                       <option value="">Select Researcher</option>
-                      {RESEARCHERS.map((r, i) => (
-                        <option key={i} value={r}>
-                          {r}
+                      {researchers.map((r) => (
+                        <option key={r._id} value={r.name}>
+                          {r.name}
                         </option>
                       ))}
+
                     </select>
 
                     <button
