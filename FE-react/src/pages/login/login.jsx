@@ -135,7 +135,7 @@ const SignInForm = () => {
           </div>
         </form>
       </div>
-      <img src={logo} alt="" className="img-log" />
+      {/* <img src={logo} alt="" className="img-log" /> */}
     </div>
   );
 };
