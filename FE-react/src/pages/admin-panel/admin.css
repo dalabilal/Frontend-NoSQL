@@ -1,0 +1,54 @@
+.admin-panel {
+  padding: 30px;
+}
+
+.admin-panel h2 {
+  margin-bottom: 20px;
+  color: #152d3e;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px;
+}
+
+.admin-table th {
+  background-color: #f3f6f9;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #555;
+}
+
+.admin-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.status.pending {
+  color: orange;
+  font-weight: bold;
+}
+
+.status.approved {
+  color: green;
+  font-weight: bold;
+}
+
+.approve-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #A3C195;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}

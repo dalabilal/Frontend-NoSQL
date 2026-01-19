@@ -1,0 +1,86 @@
+/* Container for the tables */
+.all-users {
+  padding: 30px;
+  font-family: Arial, sans-serif;
+}
+
+/* General table styles */
+.all-users table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Table header */
+.all-users table thead {
+  background-color: #f4f4f4;
+}
+
+.all-users table th,
+.all-users table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Header text styling */
+.all-users table th {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+}
+
+/* Hover effect for table rows */
+.all-users table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Input fields inside table */
+.all-users table input,
+.all-users table select,
+.all-users table textarea {
+  width: 90%;
+  padding: 6px 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-sizing: border-box;
+  font-weight: 400;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Focus state for inputs */
+.all-users table input:focus,
+.all-users table select:focus,
+.all-users table textarea:focus {
+  outline: none;
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Button style (Create / Approve) */
+.all-users button#approve {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Button hover effect */
+.all-users button#approve:hover {
+  background-color: #45a049;
+}
+
+/* Optional: separate headings for each table */
+.all-users h2 {
+  margin-top: 30px;
+  color: #333;
+}
