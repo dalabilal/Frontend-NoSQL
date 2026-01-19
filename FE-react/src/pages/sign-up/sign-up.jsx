@@ -40,44 +40,53 @@ const SignUp = () => {
         : [...prev, interest]
     );
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch("http://localhost:3005/signup/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-          department,
-          contact,
-          research_interests: researchInterests,
-          role,
-        }),
-      });
-
-      if (response.ok) {
-        setNotification({
-          message:
-            role === "owner"
-              ? "Account created. Waiting for admin approval."
-              : "Account created successfully.",
-          status: "success",
-        });
-        navigate("/signin");
-      } else {
-        setNotification({
-          message: "User was not created",
-          status: "error",
-        });
-      }
-    } catch (error) {
-      setNotification({ message: "Server Error", status: "warning" });
-    }
+  const saveUserToLocalStorage = (user) => {
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    storedUsers.push(user);
+    localStorage.setItem("users", JSON.stringify(storedUsers));
   };
+
+  const handleSubmit = (e) => {
+  e.preventDefault();
+
+  // 🔒 Prevent duplicate email
+  const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+  const emailExists = storedUsers.some((u) => u.email === email);
+
+  if (emailExists) {
+    setNotification({
+      message: "Email already exists",
+      status: "error",
+    });
+    return;
+  }
+
+  const newUser = {
+    _id: Date.now().toString(),
+    name,
+    email,
+    password, // ⚠️ only for demo, not secure
+    department,
+    contact,
+    research_interests: researchInterests,
+    role,
+    profile_status: "pending",
+    created_at: new Date().toISOString(),
+    last_login: null,
+    login_count: 0,
+  };
+
+  // ✅ Save to localStorage
+  localStorage.setItem("users", JSON.stringify([...storedUsers, newUser]));
+
+  setNotification({
+    message: "Account created successfully",
+    status: "success",
+  });
+
+  navigate("/signin");
+};
+
 
   return (
     <div className="main1">
