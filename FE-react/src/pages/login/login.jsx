@@ -21,81 +21,80 @@ const SignInForm = () => {
     return emailRegex.test(email);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (!validateEmail(email)) {
       setNotification({ message: "Invalid email format", status: "error" });
       return;
     }
 
-    // e.preventDefault();
-    // try {
-    //   const response = await fetch("http://localhost:3005/signin/", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({ email, password, verificationCode }),
-    //   });
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
+    // 🔍 Find user by email
+    const user = storedUsers.find((u) => u.email === email);
 
-  //     if (response.ok) {
-  //       const userData = await response.json();
-  //       if(userData.status === 'pending' && userData.role === 'owner') {
-  //         setNotification({ message: "can't login until your account active by the owner", status: '4335' });
-  //         return;
-  //       }
-  //       sessionStorage.setItem('jwtToken', userData.token);
-  //       sessionStorage.setItem('username', userData.firstname);
-  //       sessionStorage.setItem('userID', userData._id);
-  //       sessionStorage.setItem('userRole', userData.role);
-  //       setNotification({ message: 'Login successful!', status: 'success' });
-  //       setUserRole(userData.role);
-  //       navigate("/");
-  //     } else {
-  //       const errorData = await response.json();
-  //       if (errorData && errorData.message === "You should verifiy yourself") {
-  //           setEmailVerify(email);
-  //           navigate("/verification");
-  //           setNotification({
-  //             message:
-  //               "You should verifiy yourself",
-  //             status: "warning",
-  //           });
-  //       } else
-  //       if (errorData && errorData.message === "Invalid credentials") {
-  //         setNotification({
-  //           message: "Invalid email or password, Try again",
-  //           status: "error",
-  //         });
-  //       } else if (
-  //         errorData &&
-  //         errorData.message ===
-  //           "Verification code sent to your email. Enter the code to proceed."
-  //       ) {
-  //         setEmailVerify(email);
-  //         navigate("/verification");
-  //         setNotification({
-  //           message:
-  //             "Verification code sent to your email. Enter the code to proceed.",
-  //           status: "warning",
-  //         });
-  //       } else {
-  //         setNotification({
-  //           message: "there is no account with this email",
-  //           status: "warning",
-  //         });
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //     setNotification({
-  //       message: "there is no account with this email",
-  //       status: "warning",
-  //     });
-  //   }
-  //   setNoUser(true);
-  // };
+    if (!user) {
+      setNotification({
+        message: "No account found with this email",
+        status: "error",
+      });
+      return;
+    }
+
+    // 🔐 Match password
+    if (user.password !== password) {
+      setNotification({
+        message: "Invalid email or password",
+        status: "error",
+      });
+      return;
+    }
+
+    // ⛔ Block pending users
+    if (user.profile_status === "pending") {
+      setNotification({
+        message: "Your account is pending admin approval",
+        status: "warning",
+      });
+      return;
+    }
+
+    // ✅ Save logged-in user session
+    localStorage.setItem(
+      "loggedUser",
+      JSON.stringify({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      })
+    );
+    // 🔄 Update login activity
+    const updatedUsers = storedUsers.map((u) =>
+      u.email === email
+        ? {
+          ...u,
+          last_login: new Date().toISOString(),
+          login_count: (u.login_count || 0) + 1,
+          isActive: true,
+        }
+        : u
+    );
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    setUserRole(user.role);
+    setNoUser(false);
+
+    setNotification({
+      message: "Login successful!",
+      status: "success",
+    });
+
+    navigate("/create-research");
   };
+
   return (
     <div className="main">
       <img
